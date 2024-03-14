@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
+
+import { ContentContainer, HeaderContainer, TitleContainer } from "./App.style";
+import MovieList from "./MovieList/MovieList";
+import { SearchBar } from "./SearchBar/SearchBar";
+import { MAIN_HEADER } from "./constants";
+import Logo from "./assets/Logo.png"
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <HeaderContainer className="header">
+                <img src={Logo} alt={''} height={'80'}/>
+            </HeaderContainer>
+            <ThemeProvider theme={theme}>
+                <ContentContainer>
+                    <TitleContainer>
+                        {MAIN_HEADER}
+                    </TitleContainer>
+                    <SearchBar/>
+                    <MovieList/>
+                </ContentContainer>
+            </ThemeProvider>
+        </div>
+    );
 }
 
 export default App;
