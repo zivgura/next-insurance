@@ -3,11 +3,12 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
     colors: {
         black: '#000000',
-
+        white: '#fff'
     },
     backgrounds: {
         main: '#00D7FF',
-        secondary: '#fff'
+        secondary: '#fff',
+        footer: '#231F20'
     },
     fontSizes:{
         title: {

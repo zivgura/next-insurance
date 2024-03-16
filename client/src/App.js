@@ -1,13 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Footer } from './Footer/Footer';
+import { Header } from './Header/Header';
 import { getMovies } from './movieUtils';
 import { theme } from './theme';
 
-import { ContentContainer, HeaderContainer, TitleContainer } from "./App.style";
+import { ContentContainer, TitleContainer } from "./App.style";
 import MovieList from "./MovieList/MovieList";
 import { SearchBar } from "./SearchBar/SearchBar";
 import { MAIN_HEADER } from "./constants";
-import Logo from "./assets/Logo.png"
 import './App.css';
 
 export const ScreenContext = createContext(window.innerWidth)
@@ -35,10 +36,8 @@ function App() {
     return (
         <ScreenContext.Provider value={screenWidth}>
             <div className="App">
-                <HeaderContainer className="header">
-                    <img src={Logo} alt={'Next Movies'}/>
-                </HeaderContainer>
                 <ThemeProvider theme={theme}>
+                    <Header/>
                     <ContentContainer>
                         <TitleContainer>
                             {MAIN_HEADER}
@@ -46,6 +45,7 @@ function App() {
                         <SearchBar movies={movies} setMovies={setMovies}/>
                         <MovieList movies={movies}/>
                     </ContentContainer>
+                    <Footer/>
                 </ThemeProvider>
             </div>
         </ScreenContext.Provider>

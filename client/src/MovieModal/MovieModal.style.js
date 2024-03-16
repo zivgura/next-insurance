@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../theme';
 
 export const ModalBody = styled.div`
     background: ${({theme}) => theme.backgrounds.secondary};
@@ -16,11 +17,15 @@ export const ModalBody = styled.div`
     &:focus-visible {
         outline: none;
     }
+    @media screen and (max-width: ${theme.gridBreakpoints.md}px) {
+        top: 10%;
+    }
 `;
 
 export const PhotoSection = styled.section`
     display: flex;
     flex: 1;
+    justify-content: center;
 `;
 
 export const ContentContainer = styled.div`

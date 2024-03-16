@@ -1,28 +1,6 @@
 import styled from 'styled-components';
 import { theme } from './theme';
 
-export const HeaderContainer = styled.div`
-    display: flex;
-    align-content: center;
-    justify-content: start;
-    flex-wrap: wrap;
-    padding-left: 10%;
-    height: 113px;
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 1301;
-
-    img {
-        height: 80px;
-    }
-
-    @media screen and (max-width: ${theme.gridBreakpoints.md}px) {
-        img {
-            height: 50px;
-        }
-    }
-`;
 export const TitleContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -41,7 +19,6 @@ export const ContentContainer = styled.div`
     flex-direction: column;
     background: ${({theme})=> theme.backgrounds.main};
     max-width: 100vw;
-    overflow: hidden;
     padding: 5% 10%;
     gap: 30px;
 `;

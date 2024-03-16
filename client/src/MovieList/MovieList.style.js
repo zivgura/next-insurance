@@ -5,4 +5,5 @@ export const MovieListContainer = styled.div`
     grid-template-columns: ${({$colums}) => $colums};
     grid-gap: 0.5% 1%;
     justify-content: center;
+    overflow: hidden;
 `;

@@ -19,5 +19,8 @@ export function getDuration(movie){
 }
 
 export function getRating(movie){
-    return `★ ${movie?.rating}`
+    if(movie?.rating) {
+        return `★ ${movie?.rating}`
+    }
+    return '';
 }
