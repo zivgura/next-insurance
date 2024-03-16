@@ -1,5 +1,4 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { getAllMovies } from '../DAL/utils';
 import { getMovies } from '../movieUtils';
 import { SearchBarContainer } from "./SearchBar.style";
 

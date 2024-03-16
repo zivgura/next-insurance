@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from './theme';
 
 export const HeaderContainer = styled.div`
     display: flex;
@@ -11,10 +12,12 @@ export const HeaderContainer = styled.div`
     position: sticky;
     top: 0;
     z-index: 1301;
-    img{
+
+    img {
         height: 80px;
     }
-    @media screen and (max-width: 800px){
+
+    @media screen and (max-width: ${theme.gridBreakpoints.md}px) {
         img {
             height: 50px;
         }
@@ -24,12 +27,12 @@ export const TitleContainer = styled.div`
     display: flex;
     justify-content: center;
     margin: auto;
-    font: normal normal bold 80px/66px Arial;
+    font: ${({theme}) => `normal normal bold ${theme.fontSizes.title.large}px/${theme.rowHeights.title.large}px Arial`};
     letter-spacing: 0;
     width: 85%;
     text-transform: uppercase;
-    @media screen and (max-width: 800px){
-        font: normal normal bold 27px/25px Arial;
+    @media screen and (max-width: ${theme.gridBreakpoints.md}px) {
+        font: ${({theme}) => `normal normal bold ${theme.fontSizes.title.small}px/${theme.rowHeights.title.small}px Arial`};
     }
 `;
 

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const MovieListContainer = styled.div`
-    display: flex;
-    gap: 15px;
-    width: ${({$screenwidth}) => $screenwidth ?? '100%'};
+    display: grid;
+    grid-template-columns: ${({$colums}) => $colums};
+    grid-gap: 0.5% 1%;
+    justify-content: center;
 `;

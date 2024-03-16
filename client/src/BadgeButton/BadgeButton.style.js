@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../theme';
 
 export const BadgeButtonContainer = styled.div`
     cursor: pointer;
@@ -13,9 +14,14 @@ export const BadgeButtonContainer = styled.div`
     height: 42px;
     box-sizing: border-box;
     font: normal normal normal 18px/25px Arial;
+    font: ${({theme}) => `normal normal normal ${theme.rowHeights.secondary.xs}px/${theme.rowHeights.secondary.medium}px Arial`};
     padding: 10px 18px;
-    width: 260px;
+    width: ${({theme}) => theme.photoWidths.large};
     img{
         transform: ${({$reverse}) => $reverse ? 'rotate(180deg)' : 'none'};
+    }
+    @media screen and (max-width: ${theme.gridBreakpoints.md}px) {
+        width: ${({theme}) => theme.photoWidths.small};
+        font: ${({theme}) => `normal normal normal ${theme.fontSizes.secondary.xs}px/${theme.rowHeights.secondary.xs}px Arial`};
     }
 `;

@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { getAllMovies } from './DAL/utils';
-import { getAllTitles, getMovies } from './movieUtils';
+import { getMovies } from './movieUtils';
 import { theme } from './theme';
 
 import { ContentContainer, HeaderContainer, TitleContainer } from "./App.style";

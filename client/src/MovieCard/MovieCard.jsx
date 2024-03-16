@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { setTitle } from '../appUtils';
+import { useContext, useEffect, useState } from 'react';
+import { ScreenContext } from '../App';
+import { getWidth, setTitle } from '../appUtils';
 import { BadgeButton } from '../BadgeButton/BadgeButton';
 import { useHookWithRefCallback } from '../hooks';
 import { MovieModal } from '../MovieModal/MovieModal';
@@ -13,6 +14,7 @@ import {
 } from './MovieCard.style';
 
 export function MovieCard({movie}) {
+    const screenWidth = useContext(ScreenContext);
     const [isOpen, setIsOpen] = useState(false);
     const action = (htmlElement) => setTitle(htmlElement, movie)
     const [titleRef] = useHookWithRefCallback(action);
@@ -24,7 +26,7 @@ export function MovieCard({movie}) {
     return (
         <MovieCardContainer id={movie?.id}>
             <CardContentContainer>
-                <img src={movie?.image} alt={''} width={'260'}/>
+                <img src={movie?.image} alt={''} width={`${getWidth(screenWidth)}px`}/>
                 <CardHeaderContainer>
                     <div className='movie-title' ref={titleRef}/>
                 </CardHeaderContainer>
