@@ -1,22 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ScreenContext } from '../App';
 import { getAllMovies } from '../DAL/utils';
-import { MovieCard } from '../Movie/MovieCard';
+import { MovieCard } from '../MovieCard/MovieCard';
 import { MovieListContainer } from "./MovieList.style";
 
-export default function MovieList() {
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-        async function getMovies() {
-            return await getAllMovies();
-        }
-
-        getMovies()
-            .then(data => setMovies(data))
-    }, []);
+export default function MovieList({movies}) {
+    const screenWidth = useContext(ScreenContext);
 
     return (
-        <MovieListContainer>
+        <MovieListContainer $screenwidth={screenWidth}>
             {movies?.map(movie => (
                 <MovieCard key={movie?.id} movie={movie}/>
             ))}

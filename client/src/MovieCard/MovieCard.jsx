@@ -1,22 +1,24 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { setTitle } from '../appUtils';
+import { BadgeButton } from '../BadgeButton/BadgeButton';
+import { useHookWithRefCallback } from '../hooks';
 import { MovieModal } from '../MovieModal/MovieModal';
+import { getRating } from '../movieUtils';
 import {
     CardContentContainer,
     CardHeaderContainer,
     MovieCardContainer,
     MovieRatingContainer,
-    ReadMoreContainer
 } from './MovieCard.style';
-import { setTitle } from './utils';
-import ArrowIcon from "../assets/arrow.svg";
 
 export function MovieCard({movie}) {
     const [isOpen, setIsOpen] = useState(false);
-    const titleRef = useRef();
+    const action = (htmlElement) => setTitle(htmlElement, movie)
+    const [titleRef] = useHookWithRefCallback(action);
 
     useEffect(() => {
-        setTitle(titleRef, movie)
+
     }, [movie]);
 
     return (
@@ -27,11 +29,11 @@ export function MovieCard({movie}) {
                     <div className='movie-title' ref={titleRef}/>
                 </CardHeaderContainer>
             </CardContentContainer>
-            <MovieRatingContainer>{`★ ${movie?.rating}`}</MovieRatingContainer>
-            <ReadMoreContainer onClick={() => setIsOpen(true)}>
-                Read more
-                <img src={ArrowIcon} alt={'->'}/>
-            </ReadMoreContainer>
+            <MovieRatingContainer>{getRating(movie)}</MovieRatingContainer>
+            <BadgeButton
+                onClick={() => setIsOpen(true)}
+                text={'Read more'}
+            />
             {isOpen &&
                 <MovieModal
                     movie={movie}
